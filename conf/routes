@@ -4,6 +4,7 @@
 
 GET     /                           controllers.Application.index()
 GET     /showall                    controllers.Application.showAll()
+GET     /showallwithname            controllers.Application.getPostsWithName()
 GET     /*user                      controllers.Application.showMyPosts(user)
 
 POST     /                          controllers.Application.post()

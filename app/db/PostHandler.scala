@@ -21,4 +21,19 @@ class PostHandler {
     collection.find().filter(_.get("name") == name).toList.map(_.get("post").toString)
   }
 
+  def getPostsWithName() : List[String] = {
+    val posts = collection.find().toList.map(_.get("post").toString)
+    val names = collection.find().toList.map(_.get("name").toString)
+
+    def getPostsWithNames(abc : List[(String,String)]) : List[String] = {
+      var result = List.empty[String]
+      for((name,post) <- abc){
+        result = result :+ name + " : " + post
+      }
+      result
+    }
+
+    getPostsWithNames(names zip posts)
+  }
+
 }

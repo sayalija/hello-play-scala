@@ -6,6 +6,7 @@ import db._
 object Application extends Controller {
 
   val myPostHandler = new PostHandler
+
   def index = Action {
     Ok(views.html.index())
   }
@@ -27,6 +28,12 @@ object Application extends Controller {
 
   def showMyPosts(name: String) = Action{
     val myPosts = myPostHandler.getDocuments(name)
+    Ok(views.html.display(myPosts))
+  }
+
+  def getPostsWithName = Action{
+    val myPosts = myPostHandler.getPostsWithName()
+
     Ok(views.html.display(myPosts))
   }
 
