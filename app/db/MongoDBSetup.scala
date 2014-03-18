@@ -1,4 +1,5 @@
-package models
+package db
+
 import com.mongodb.casbah.MongoConnection
 
 object MongoDBSetup {
