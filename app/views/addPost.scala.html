@@ -1,0 +1,10 @@
+@(name:String)
+<form action="/addpost/@name" method="post">
+    <br><br>
+    <input name="name" type="text" id="name" value="@name" readonly><br><br>
+    <label for="postname">Post Name : </label>
+    <input name="postname" type="text" id="PostName"><br><br>
+    <label >Content : </label>
+    <input name="content" type="text" id="Content"><br><br>
+    <input type="submit" value="Submit">
+</form>

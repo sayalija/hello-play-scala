@@ -1,12 +1,14 @@
 package models
 
 import scala.collection.JavaConverters._
+import db.MongoDataBase
 
-class Blogger {
-  private var users: Map[String, User] = Map.empty
+case class Blogger(users: Map[String, User] = Map.empty) {
 
-  def addUser(user: User) = {
-    users  = users + (user.name -> user)
+  val mongodb = new MongoDataBase()
+
+  def addUser(user: User) : Blogger= {
+    Blogger(users + (user.name -> user))
   }
 
   def isValidUser(userName: String, password: String): Boolean = {
@@ -18,6 +20,16 @@ class Blogger {
 
     }
     flag
+  }
+
+  def addPostTo(userName: String, post: Post) = {
+    val myUser: User = users.get(userName).getOrElse(null)
+    myUser.addPost(post)
+    mongodb.addPost(userName,post.postName,post.content)
+  }
+
+  def getMyPosts(userName: String): List[String] = {
+    mongodb.showMyPosts(userName)
   }
 
   def contains(name: String) : Boolean = {

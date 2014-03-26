@@ -2,7 +2,7 @@ package models
 
 import java.util.Date
 
-class Post(postName: String, content: String, date: Date) {
+case class Post(postName: String, content: String) {
   var comments = List.empty[Comment]
 
 

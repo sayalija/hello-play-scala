@@ -1,12 +1,12 @@
-@()
-@main(title="Welcome"){
-}
+@(message:String)
 
-<form action="/" method="post">
+
+<form action="/addpost" method="post">
     <br><br>
+    <label >@message </label> <br><br>
     <label for="name">Name : </label>
     <input name="name" type="text" id="Name"><br><br>
-    <label >Post to add : </label>
-    <input name="postToAdd" type="text" id="postToAdd"><br><br>
+    <label >Password : </label>
+    <input name="password" type="text" id="pwd"><br><br>
     <input type="submit" value="Submit">
 </form>
